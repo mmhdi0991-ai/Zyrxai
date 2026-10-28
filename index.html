@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="theme-color" content="#1b0610">
+<meta name="description" content="ZyrxAI — your personal AI workspace.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ZyrxAI</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -1755,6 +1762,11 @@ function COV(go){ return '<div class="gcov '+(go?'gout':'gin')+'"><div class="gg
   };
   window.openCamera=open;
 })();
+</script>
+<script>
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(err => console.warn("PWA service worker:", err)));
+}
 </script>
 </body>
 </html>
