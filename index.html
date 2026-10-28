@@ -1270,7 +1270,7 @@ async function dlImg(m){
     const u=URL.createObjectURL(bl), a=document.createElement("a"); a.href=u; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),4000); toast("Download started");
   }catch(e){ if(e&&e.name==="AbortError") return; saveImg(m); }
 }
-const BOT_USER="Xk4392_bot";
+const BOT_USER="Zyrxai_tttbot";
 function showLogin(){ $("lg").hidden=false; const w=$("lgw"); w.innerHTML="";
   if(BOT_USER.startsWith("YOUR_")){ w.textContent="Bot username is not set yet."; return; }
   const s=document.createElement("script"); s.async=true; s.src="https://telegram.org/js/telegram-widget.js?22";
