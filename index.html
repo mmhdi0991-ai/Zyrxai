@@ -631,7 +631,7 @@ async function copyText(t){ try{ await navigator.clipboard.writeText(t); return;
    travel in "message" exactly like in Telegram, so your existing routing keeps working.
    POST /checkin { score, date }   POST /settings { mode, ext:[ids], nightly }
    Validate X-Telegram-Init-Data in n8n with the bot token. */
-const API_URL = "https://mjgdtuijgyuhbh.app.n8n.cloud/webhook/zyrxai-api";
+const API_URL = "https://mahdifxnkn.app.n8n.cloud/webhook/zyrxai-app";
 const DEMO = "Hi! This is a demo reply: the app isn't connected to n8n yet.\nSet `API_URL` and real **ZyrxAI** answers will show up here.";
 
 const tg = window.Telegram && window.Telegram.WebApp;
@@ -677,7 +677,7 @@ let tab = "home", cur = null, busy = false, pend = [], rec = null;
 const saveS = () => { try{ localStorage.setItem("nb",JSON.stringify(S)); }catch(e){} };
 const saveC = () => { try{ localStorage.setItem("chats",JSON.stringify(chats.slice(0,40),(k,v)=>k==="audio"||(k==="img"&&!/^https?:/.test(v))?undefined:v)); }catch(e){} };
 const on = () => EXT.filter(e=>S.ext[e.id]).map(e=>e.id);
-function post(p,b){ if(API_URL) fetch(API_URL+p,{method:"POST",headers:{"Content-Type":"application/json","X-Telegram-Init-Data":initData,"X-Telegram-Login":LT()},body:JSON.stringify(b)}).catch(()=>{}); }
+function post(p,b){ if(API_URL) fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json","X-Telegram-Init-Data":initData,"X-Telegram-Login":LT()},body:JSON.stringify({...b,action:p.replace(/^\\//,"")})}).catch(()=>{}); }
 function sync(){ post("/settings",{mode:S.mode,ext:on(),nightly:!!S.ext.mood}); }
 
 function applyS(){
@@ -990,7 +990,7 @@ async function api(body){
     await new Promise(r=>setTimeout(r,600)); const a=body.attachments||[];
     return {reply:DEMO+(a.length?"\n\nAttached: "+a.map(x=>x.type).join(", ")+". The real bot would process it.":"")};
   }
-  const r=await fetch(API_URL+"/chat",{method:"POST",headers:{"Content-Type":"application/json","X-Telegram-Init-Data":initData,"X-Telegram-Login":LT()},body:JSON.stringify({...body,ext:on()})});
+  const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json","X-Telegram-Init-Data":initData,"X-Telegram-Login":LT()},body:JSON.stringify({...body,ext:on()})});
   if(!r.ok) throw new Error(r.status); const j=await r.json(); if(j&&/open ZyrxAI from inside Telegram/.test(j.reply||"")&&!initData){ try{localStorage.removeItem("tgl")}catch(e){} showLogin(); } return j;
 }
 function quiet(t){ if(!API_URL) return toast("Saved"); api({message:t}).then(()=>toast("Updated")).catch(()=>toast("Couldn't update")); }
