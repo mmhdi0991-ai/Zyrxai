@@ -687,7 +687,7 @@ function applyS(){
   const FH={cormorant:'"Cormorant Garamond",Vazirmatn,Georgia,serif',playfair:'"Playfair Display",Vazirmatn,Georgia,serif',cinzel:'Cinzel,Vazirmatn,Georgia,serif'};
   const FU={manrope:'Manrope,Vazirmatn,system-ui,sans-serif',inter:'Inter,Vazirmatn,system-ui,sans-serif',vazir:'Vazirmatn,system-ui,sans-serif'};
   r.style.setProperty("--fh",FH[S.fh||"cinzel"]); r.style.setProperty("--fu",FU[S.fu||"manrope"]);
-  if(S.bg){ const lt=isLightHex(S.bg); r.style.setProperty("--bg",S.bg); r.style.setProperty("--card",lt?"#FFFFFF":"color-mix(in srgb, "+S.bg+" 80%, #FFFFFF)"); r.style.setProperty("--line",lt?"rgba(20,18,14,.1)":"rgba(255,255,255,.14)"); r.style.setProperty("--tx",lt?"#141414":"#FBEFF0"); r.style.setProperty("--soft",lt?"#6f6a60":"#D9A9B3"); }
+  if(false && S.bg){ const lt=isLightHex(S.bg); r.style.setProperty("--bg",S.bg); r.style.setProperty("--card",lt?"#FFFFFF":"color-mix(in srgb, "+S.bg+" 80%, #FFFFFF)"); r.style.setProperty("--line",lt?"rgba(20,18,14,.1)":"rgba(255,255,255,.14)"); r.style.setProperty("--tx",lt?"#141414":"#FBEFF0"); r.style.setProperty("--soft",lt?"#6f6a60":"#D9A9B3"); }
   else { ["--bg","--card","--line","--tx","--soft"].forEach(v=>r.style.removeProperty(v)); }
   try{ const c = S.bg || (t==="dark"?"#1b0610":"#F5F3EE"); tg.setHeaderColor(c); tg.setBackgroundColor(c); }catch(e){}
 }
